@@ -1,19 +1,32 @@
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        try {
-            Author jung = new Author("Carl Jung", LocalDate.of(1875, Month.JULY,26));
-            System.out.println(jung);
+        Library library = new Library();
+        Scanner scan = new Scanner(System.in);
 
-            Book jungBook = new Book("O Desenvolvimento da Personalidade", jung);
+        while (true){
+            System.out.println("Deseja ver a Lista de livros? (S/N)");
+            String answer = scan.nextLine();
 
-            System.out.println(jungBook);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Inserção de dados incorreta");
+            if (answer.equalsIgnoreCase("s")) {
+                System.out.println("\n ----  LIVROS  ----");
+                List<Book> books = library.getBooks();
+
+                if (books.isEmpty()){
+                    System.out.println("\n NENHUM LIVRO CADASTRADO");
+                }
+                books.forEach(book -> {
+                    String printString = String.format("ID: %s - Título: %s - Autor: %s",book.getId(), book.getTitle(), book.getAuthor());
+                    System.out.println(printString);
+                });
+            } else if (answer.equalsIgnoreCase("N")) {
+                break; // Sai do loop
+            }
         }
-
 
     }
 }
