@@ -29,8 +29,8 @@ public class Book {
         return title;
     }
 
-    public Author getAuthor() {
-        return author;
+    public String getAuthor() {
+        return author.getName();
     }
 
     public boolean isAvailable() {
