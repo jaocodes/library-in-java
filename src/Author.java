@@ -29,6 +29,16 @@ public class Author {
     }
 
     public String toString(){
-        return String.format("ID: %s Name: %s DateOfBirth: %td/%<tm/%<tY",id,name,dateOfBirth);
+        return """
+        {
+          "id": "%s",
+          "name": "%s",
+          "dateOfBirth": "%td de %<tb de %<tY"
+        }""".formatted(id, name, dateOfBirth);
+
+        /*return String.format(
+                "Author{id='%s', name='%s', dateOfBirth='%td de %<tb de %<tY'}",
+                id,name,dateOfBirth);*/
     }
+
 }
