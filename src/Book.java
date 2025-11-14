@@ -21,6 +21,11 @@ public class Book {
         this.updatedAt = dateCreation;
     }
 
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+        updatedAt = LocalDate.now();
+    }
+
     public String getId() {
         return id;
     }
