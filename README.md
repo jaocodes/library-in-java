@@ -10,6 +10,8 @@ Este projeto implementa um sistema de biblioteca que permite:
 - Controlar disponibilidade dos livros
 - Interagir via interface de linha de comando
 
+[Acessar detalhamento dos requisitos](src/PROJECT.md) do sistema.
+
 ## Estrutura do Projeto
 
 ```
