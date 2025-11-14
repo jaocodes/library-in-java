@@ -35,4 +35,29 @@ public class Library {
         books.add(new Book("Laços de Família", clarice));
         books.add(new Book("Quincas Borba", machado));
     }
+
+    public Loan loanBook(String bookId, String name){
+        Book book = findBookById(bookId);
+
+        if(book == null) throw new IllegalArgumentException("Livro não encontrado " + bookId);
+        if(!book.isAvailable()) throw new IllegalArgumentException("Livro não disponível " + book.getTitle());
+        if(name.isEmpty()) throw new IllegalArgumentException("Nome inválido");
+
+        book.setAvailable(false);
+
+        Loan loan = new Loan(book,name);
+        loans.add(loan);
+
+        return loan;
+    }
+
+    private Book findBookById(String bookId){
+        return books.stream()
+                .filter(book -> book.getId().equals(bookId))
+                .findFirst()
+                .orElse(null);
+    }
+
+
+
 }
